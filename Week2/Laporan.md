@@ -67,7 +67,7 @@ Lalu lintas data yang dianalisis berasal dari interaksi dengan server berikut:
 2. Jendela pemilihan interface capture
 
 
-![Wireshark](./Assets/Pilihan.png)
+    ![Wireshark](./Assets/Pilihan.png)
 
 3. Daftar paket hasil capture (Packet List) menggunakan filter paket dengan ekspresi **http**
 ![Wireshark](./Assets/Filter.png)
@@ -76,7 +76,7 @@ Lalu lintas data yang dianalisis berasal dari interaksi dengan server berikut:
 ![Wireshark](./Assets/Detail.png)
 
 5.Konten paket dalam format Hex & ASCII
-![Wireshark](./Assets/Konten.png)
+    ![Wireshark](./Assets/Konten.png)
 
 ---
 
