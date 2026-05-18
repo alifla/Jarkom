@@ -10,7 +10,7 @@
 
 ---
 
-### 1. Tujuan Praktikum
+### 1. Tujuan pembelajaran dan praktikum
 Berdasarkan modul praktikum Jaringan Komputer, tujuan dari Modul 2 adalah:
 1. Mengoperasikan Wireshark untuk menangkap lalu lintas paket data.
 2. Mengidentifikasi dan menganalisis struktur paket berdasarkan lapisan protokol.
