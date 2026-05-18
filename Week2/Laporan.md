@@ -47,7 +47,7 @@ Proses pengambilan dan analisis data dilakukan dengan mengikuti prosedur berikut
 | **Analisis Paket** | Pilih paket HTTP GET, ekspansi detail HTTP | Fokus pada field Request Method, Host, dan User-Agent |
 | **Selesai** | Tutup aplikasi Wireshark | Menyimpan hasil analisis ke dalam laporan |
 
-3.2
+3.2 URL Target Praktikum
 
 Lalu lintas data yang dianalisis berasal dari interaksi dengan server berikut:
 * **URL**: `http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html`
@@ -62,19 +62,19 @@ Lalu lintas data yang dianalisis berasal dari interaksi dengan server berikut:
 4.1 Dokumentasi Tampilan Wireshark
 
 1. Tampilan awal Wireshark (Welcome Screen)
-    ![Wireshark](./Assets/Wireshark.png)
+![Wireshark](./Assets/Wireshark.png)
 
 2. Jendela pemilihan interface capture
-    ![Wireshark](./Assets/Pilihan.png)
+![Wireshark](./Assets/Pilihan.png)
 
 3. Daftar paket hasil capture (Packet List) menggunakan filter paket dengan ekspresi **http**
-    ![Wireshark](./Assets/Filter.png)
+![Wireshark](./Assets/Filter.png)
 
 4. Detail paket HTTP GET (Packet Details)
-    ![Wireshark](./Assets/Detail.png)
+![Wireshark](./Assets/Detail.png)
 
 5.Konten paket dalam format Hex & ASCII
-    ![Wireshark](./Assets/Konten.png)
+![Wireshark](./Assets/Konten.png)
 
     ---
 
