@@ -1,4 +1,4 @@
-# Laporan Praktikum Jaringan Komputer - Modul 1
+# Laporan Praktikum Jaringan Komputer - Modul 2
 
 ### Identitas Praktikan
 
