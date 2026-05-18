@@ -65,6 +65,8 @@ Lalu lintas data yang dianalisis berasal dari interaksi dengan server berikut:
 ![Wireshark](./Assets/Wireshark.png)
 
 2. Jendela pemilihan interface capture
+
+
 ![Wireshark](./Assets/Pilihan.png)
 
 3. Daftar paket hasil capture (Packet List) menggunakan filter paket dengan ekspresi **http**
@@ -79,11 +81,11 @@ Lalu lintas data yang dianalisis berasal dari interaksi dengan server berikut:
 ---
 
 ### 5. Kesimpulan
-1	Wireshark berhasil diinstal dan berjalan stabil pada sistem operasi yang digunakan
+1.	Wireshark berhasil diinstal dan berjalan stabil pada sistem operasi yang digunakan
 
-2	Fungsi Packet Sniffer yakni Wireshark mampu menangkap paket secara pasif tanpa mengganggu lalu lintas 
+2.	Fungsi Packet Sniffer yakni Wireshark mampu menangkap paket secara pasif tanpa mengganggu lalu lintas 
 jaringan
 
-3	Lima komponen utama Wireshark terintegrasi dengan baik untuk memudahkan analisis berlapis
+3.	Lima komponen utama Wireshark terintegrasi dengan baik untuk memudahkan analisis berlapis
 
-4	Fitur filter sangat efektif untuk mengisolasi paket spesifik dari ribuan paket yang tertangkap
+4.	Fitur filter sangat efektif untuk mengisolasi paket spesifik dari ribuan paket yang tertangkap
