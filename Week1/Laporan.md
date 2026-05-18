@@ -10,7 +10,7 @@
 
 ---
 
-### 1. Tujuan Praktikum
+### 1. Tujuan pembelajaran dan praktikum
 
 Berdasarkan modul praktikum Jaringan Komputer Semester Genap 2025/2026, tujuan dari Modul 1 adalah:
 
