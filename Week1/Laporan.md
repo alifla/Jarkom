@@ -54,7 +54,7 @@ Briefing Aturan Praktikum
 4.1 Tampilan Awal Wireshark
 Berikut adalah tampilan awal Wireshark sebelum membuka file trace. Terlihat daftar interface jaringan yang tersedia.
 
-![Wireshark](Assets/WireShark.png)
+![Wireshark](./Assets/Wireshark.png)
 
 4.2 Verifikasi Python
 Berikut adalah tangkapan layar Command Prompt/Terminal saat mengecek versi Python untuk memastikan tools siap digunakan pada modul selanjutnya (Modul 7 & 9).
