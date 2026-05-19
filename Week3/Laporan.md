@@ -81,7 +81,8 @@ Untuk skenario autentikasi, digunakan parameter login sebagai berikut:
 
 -Wireshark menampilkan keterangan [TCP segment of a reassembled PDU].
 
--Ini menunjukkan bahwa lapisan transportasi (TCP) memecah data besar menjadi segmen-segmen kecil sebelum dikirim.
+-lapisan transportasi (TCP) memecah data besar menjadi segmen-segmen kecil sebelum dikirim.
+
 ---
 
 ### 4.4 HTML Documents dengan Embedded Objects
