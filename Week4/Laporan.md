@@ -70,3 +70,13 @@
 | Jenis Query  | NS (Name Server)             |
 | Hasil        | Daftar server DNS resmi MIT  |
 | Contoh       | `dscb.akamaiedge.net`        |
+
+## 4.3 Query ke DNS Server Tertentu
+
+![Wireshark](./Assets/4.3.png)
+
+| Parameter               | Nilai                                      |
+|-------------------------|--------------------------------------------|
+| Domain                  | `www.aiit.or.kr`                           |
+| DNS Server yang dipakai | `8.8.8.8` (Google Public DNS)              |
+| Hasil IP                | `172.67.152.120` , `104.21.74.8`           |
