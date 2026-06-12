@@ -59,3 +59,14 @@
 | Hasil IP                | `23.15.150.186`                  |
 | DNS Server yang dipakai | DNS lokal (dari `ipconfig`)      |
 | Status jawaban          | Non-authoritative (dari cache)   |
+
+## 4.2 Query NS Record (Siapa Server Resminya?)
+
+![Wireshark](./Assets/4.2.png)
+
+| Informasi    | Nilai                        |
+|--------------|------------------------------|
+| Domain       | `www.mit.edu`                |
+| Jenis Query  | NS (Name Server)             |
+| Hasil        | Daftar server DNS resmi MIT  |
+| Contoh       | `dscb.akamaiedge.net`        |
