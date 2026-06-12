@@ -34,7 +34,7 @@
 
 ## 3. Langkah Kerja
 
-### 3.1 Ringkasan Semua Percobaan
+### Ringkasan Semua Percobaan
 
 | No | Percobaan | Perintah / URL | Yang Diamati |
 | :---: | :--- | :--- | :--- |
@@ -80,3 +80,23 @@
 | Domain                  | `www.aiit.or.kr`                           |
 | DNS Server yang dipakai | `8.8.8.8` (Google Public DNS)              |
 | Hasil IP                | `172.67.152.120` , `104.21.74.8`           |
+
+## 4.4 Query Alamat IP Server Web di Asia
+
+![Wireshark](./Assets/4.4.png)
+
+| Domain            | Lokasi        | Hasil IP       | Keterangan                        |
+|-------------------|---------------|----------------|-----------------------------------|
+| `www.nus.edu.sg`  | Singapura, SG | `45.60.35.225` | National University of Singapore |
+
+**Analisis:**
+
+- Perintah `nslookup www.nus.edu.sg` digunakan untuk mengetahui alamat IP dari domain tersebut.
+
+- Domain www.nus.edu.sg merupakan server web milik National University of Singapore (NUS) di Asia.
+
+- Hasil query menampilkan satu atau lebih alamat IP yang terasosiasi dengan domain tersebut.
+
+- Alamat IP inilah yang digunakan oleh client untuk mengakses server web tujuan.
+
+- Query ini menunjukkan proses dasar resolusi DNS dari nama domain menjadi alamat IP.
