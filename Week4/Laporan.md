@@ -147,3 +147,15 @@
 | Default Gateway  | `192.168.1.1`                   | Alamat router / modem                 |
 | DNS Servers      | `127.0.2.2` , `127.0.2.3`      | Server yang dipakai untuk resolusi DNS |
 | Physical Address | `1C-CE-51-05-1F-BA`             | MAC Address adapter jaringan          |
+
+## 4.7.2 ipconfig /displaydns — Lihat Cache DNS
+
+![Wireshark](./Assets/4.7.3.png)
+
+| Field        | Arti                                              |
+|--------------|---------------------------------------------------|
+| Record Name  | Nama domain yang di-cache                         |
+| Record Type  | Jenis record (A, AAAA, CNAME, dll)                |
+| Time To Live | Berapa detik lagi cache ini kadaluarsa            |
+| Data Length  | Ukuran data record                                |
+| Section      | Bagian pesan DNS (Answer, Authority, Additional)  |
