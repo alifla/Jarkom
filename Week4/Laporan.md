@@ -116,3 +116,34 @@
 - Informasi ini penting untuk memahami bagaimana DNS mendistribusikan tanggung jawab pengelolaan domain.
 
 - Domain tersebut merupakan milik University of Oxford di Eropa.
+
+## 4.6 Query MX Record (Server Email)
+
+![Wireshark](./Assets/4.6.png)
+
+| Mail Server              | Fungsi              |
+|--------------------------|---------------------|
+| `mta7.am0.yahoodns.net`  | Prioritas tertinggi |
+| `mta6.am0.yahoodns.net`  | Cadangan            |
+| `mta5.am0.yahoodns.net`  | Cadangan lagi       |
+
+**Penjelasan Priority:**
+
+- Angka kecil = prioritas lebih tinggi
+- Email dikirim ke server priority 1 dulu
+- Kalau gagal, coba priority 5, lalu 10, dst.
+
+## 4.7 Perintah ipconfig (Cek & Kelola Jaringan)
+
+## 4.7.1 ipconfig /all — Lihat Semua Info Jaringan
+
+![Wireshark](./Assets/4.7.1.png)
+![Wireshark](./Assets/4.7.2.png)
+
+| Informasi        | Contoh Nilai                    | Kegunaan                              |
+|------------------|---------------------------------|---------------------------------------|
+| IPv4 Address     | `192.168.1.8`                   | Alamat laptop di jaringan lokal       |
+| Subnet Mask      | `255.255.255.0`                 | Menentukan rentang jaringan           |
+| Default Gateway  | `192.168.1.1`                   | Alamat router / modem                 |
+| DNS Servers      | `127.0.2.2` , `127.0.2.3`      | Server yang dipakai untuk resolusi DNS |
+| Physical Address | `1C-CE-51-05-1F-BA`             | MAC Address adapter jaringan          |
