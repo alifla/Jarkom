@@ -51,7 +51,7 @@
 
 ## 4.1 Query A Record (Domain → IP)
 
-![Wireshark](./Assets/nslookup www.mit.edu.png)
+![Wireshark](./Assets/4.1.png)
 
 | Informasi               | Nilai                            |
 |-------------------------|----------------------------------|
