@@ -100,3 +100,19 @@
 - Alamat IP inilah yang digunakan oleh client untuk mengakses server web tujuan.
 
 - Query ini menunjukkan proses dasar resolusi DNS dari nama domain menjadi alamat IP.
+
+## 4.5 Query DNS Otoritatif (NS Record)
+
+![Wireshark](./Assets/4.5.png)
+
+**Analisis:**
+
+- Perintah nslookup -type=NS www.ox.ac.uk digunakan untuk mengetahui server DNS otoritatif dari domain tersebut.
+
+- Hasil query menampilkan daftar Name Server (NS) yang bertanggung jawab atas domain www.ox.ac.uk.
+
+- Server DNS otoritatif adalah server yang memiliki informasi resmi terkait domain tersebut.
+
+- Informasi ini penting untuk memahami bagaimana DNS mendistribusikan tanggung jawab pengelolaan domain.
+
+- Domain tersebut merupakan milik University of Oxford di Eropa.
