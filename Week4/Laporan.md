@@ -159,3 +159,179 @@
 | Time To Live | Berapa detik lagi cache ini kadaluarsa            |
 | Data Length  | Ukuran data record                                |
 | Section      | Bagian pesan DNS (Answer, Authority, Additional)  |
+
+## 4.8 Analisis DNS via Wireshark + nslookup
+
+![Wireshark](./Assets/4.8.png)
+
+#### 4.8.1 Pertanyaan dan Analisis
+
+**1. Apakah protokol transport yang digunakan DNS?**
+
+DNS menggunakan protokol **UDP (User Datagram Protocol)** dengan port tujuan **53**. Hal ini terlihat pada panel detail Wireshark:
+
+UDP dipilih karena lebih ringan dan cepat untuk query kecil seperti DNS, tanpa perlu proses handshake seperti TCP.
+
+---
+
+**2. Berapa port sumber dan port tujuan yang digunakan?**
+
+| Keterangan   | Nilai  |
+| ------------ | ------ |
+| Port Sumber  | 50369  |
+| Port Tujuan  | 53     |
+
+Port sumber bersifat **ephemeral** (acak), sedangkan port tujuan selalu **53** sesuai standar DNS.
+
+---
+
+**3. Ke IP mana DNS Query dikirimkan? Apakah sama dengan DNS server pada `ipconfig`?**
+
+DNS Query dikirimkan ke **`8.8.8.8`** (Google Public DNS). Hal ini dikarenakan pada perintah `nslookup` ditambahkan argumen `8.8.8.8` untuk memaksa query langsung ke Google DNS, bukan ke DNS lokal router (`192.168.1.1`).
+
+---
+
+**4. Apa saja jenis query DNS yang dikirimkan?**
+
+Terdapat 2 jenis query yang dikirimkan:
+
+| No | Jenis Query | Keterangan                  |
+| -- | ----------- | --------------------------- |
+| 1  | **A**       | Menanyakan alamat IPv4      |
+| 2  | **AAAA**    | Menanyakan alamat IPv6      |
+
+---
+
+**5. Apakah DNS Query mengandung jawaban?**
+
+**Tidak.** Paket DNS Query hanya berisi pertanyaan, tanpa jawaban. Hal ini terlihat dari:
+
+---
+
+**6. Apa isi jawaban dari DNS Response?**
+
+DNS server `8.8.8.8` memberikan respons sebagai berikut:
+
+| Record | Nilai                    |
+| ------ | ------------------------ |
+| A      | `104.16.45.99`           |
+| A      | `104.16.44.99`           |
+| AAAA   | `2606:4700::6810:2c63`   |
+| AAAA   | `2606:4700::6810:2d63`   |
+
+Domain `www.ietf.org` mengembalikan **2 alamat IPv4** yang menunjukkan penggunaan **load balancing** — traffic dibagi ke beberapa server agar tidak overload.
+
+---
+
+**7. Apakah IP pada DNS Response cocok dengan koneksi TCP selanjutnya?**
+
+**Ya.** Setelah DNS Response diterima, browser atau sistem akan langsung membuka koneksi TCP ke salah satu IP yang dikembalikan (`104.16.45.99` atau `104.16.44.99`). Hal ini dapat diverifikasi dengan melihat paket TCP SYN setelah paket DNS Response di Wireshark.
+
+---
+
+**8. Apakah setiap request gambar/resource di website membutuhkan query DNS baru?**
+
+**Tidak.** Setelah DNS Response diterima, hasilnya akan disimpan di **cache DNS** selama durasi TTL (Time To Live). Selama TTL belum habis, sistem tidak perlu mengirim query DNS ulang untuk domain yang sama, sehingga menghemat waktu dan bandwidth.
+
+---
+
+### 4.9 Tracing DNS dengan Wireshark - Query ke DNS Server Spesifik
+
+![Wireshark](./Assets/4.9.png)
+
+#### 4.9.1 Alamat IP Tujuan DNS Query
+
+
+Query DNS dikirimkan ke **`8.8.8.8`** (Google Public DNS), bukan ke DNS lokal
+router (`192.168.1.1`). Hal ini karena pada perintah `nslookup` ditambahkan
+argumen `8.8.8.8` secara eksplisit:
+
+| Keterangan          | Nilai           |
+| ------------------- | --------------- |
+| IP Sumber (Client)  | `192.168.1.8`   |
+| IP Tujuan (DNS)     | `8.8.8.8`       |
+| DNS Lokal (Router)  | `192.168.1.1`   |
+
+Perbedaan IP tujuan ini menunjukkan bahwa query **melewati internet** langsung
+ke Google DNS, bukan diselesaikan secara lokal oleh router.
+
+---
+
+#### 4.9.2 Jenis Query DNS
+
+Terdapat 2 jenis query yang dikirimkan secara otomatis oleh sistem:
+
+| No | Tipe Query | Keterangan                  | No. Paket |
+| -- | ---------- | --------------------------- | --------- |
+| 1  | **A**      | Menanyakan alamat IPv4      | 2693      |
+| 2  | **AAAA**   | Menanyakan alamat IPv6      | 2709      |
+
+Detail paket DNS Query (No. 2693):
+
+DNS Query **tidak mengandung jawaban** (Answer RRs = 0) karena hanya berisi
+permintaan dari client ke server.
+
+---
+
+#### 4.9.3 Isi Jawaban DNS Response
+
+DNS server `8.8.8.8` memberikan respons untuk query tipe A (No. Paket 2707):
+
+| No | Domain           | Tipe  | IP Address       |
+| -- | ---------------- | ----- | ---------------- |
+| 1  | `www.aiit.or.kr` | A     | `172.67.152.120` |
+| 2  | `www.aiit.or.kr` | A     | `104.21.74.8`    |
+
+Untuk query tipe AAAA (No. Paket 2752):
+
+| No | Domain           | Tipe  | IPv6 Address                    |
+| -- | ---------------- | ----- | ------------------------------- |
+| 1  | `www.aiit.or.kr` | AAAA  | `2606:4700:3031::ac43:9878`     |
+| 2  | `www.aiit.or.kr` | AAAA  | `2606:4700:3036::6815:4a08`     |
+
+Detail paket DNS Response (No. 2707):
+
+---
+
+#### 4.9.4 Analisis
+
+- DNS menggunakan protokol **UDP port 53** untuk proses query-response. UDP
+  dipilih karena lebih ringan dan cepat dibanding TCP untuk query berukuran kecil.
+
+- Query dikirim langsung ke **Google Public DNS (8.8.8.8)**, melewati DNS lokal
+  router, sehingga response time sedikit lebih tinggi karena melewati internet.
+
+- Domain `www.aiit.or.kr` mengembalikan **2 alamat IPv4** (`172.67.152.120` dan
+  `104.21.74.8`) yang merupakan bagian dari jaringan **Cloudflare (CDN)**. Hal
+  ini menunjukkan penggunaan **load balancing** untuk mendistribusikan traffic.
+
+- Response bersifat **non-authoritative** karena berasal dari cache DNS Google,
+  bukan langsung dari authoritative DNS server domain `aiit.or.kr`.
+
+- DNS mendukung **dual-stack network** dengan mengembalikan record **A (IPv4)**
+  dan **AAAA (IPv6)** secara bersamaan dalam dua query terpisah.
+
+- Setiap pasang query dan response memiliki **Transaction ID** yang sama
+  (`0x0002` dan `0x0003`) sebagai mekanisme pencocokan antara request dan reply.
+
+---
+
+#### Kesimpulan
+
+Dari percobaan tracing DNS menggunakan Wireshark dan perintah `nslookup
+www.aiit.or.kr 8.8.8.8` dapat disimpulkan:
+
+- DNS menggunakan **UDP port 53** untuk komunikasi query-response yang ringan
+  dan efisien.
+- Dengan menambahkan argumen DNS server pada `nslookup`, query dapat diarahkan
+  ke **DNS server spesifik** (dalam hal ini `8.8.8.8`) tanpa melalui DNS lokal.
+- DNS server `8.8.8.8` berhasil me-resolve `www.aiit.or.kr` menjadi
+  `172.67.152.120` dan `104.21.74.8`.
+- Domain `www.aiit.or.kr` menggunakan **Cloudflare CDN** sebagai infrastruktur,
+  terbukti dari IP address yang dikembalikan.
+- DNS mendukung **dual-stack (IPv4 & IPv6)** dengan mengembalikan record A dan
+  AAAA secara otomatis.
+- Wireshark dapat digunakan untuk menganalisis seluruh proses resolusi DNS secara
+  detail, mulai dari query hingga response beserta isi record-nya.
+
+---
