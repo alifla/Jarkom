@@ -1,5 +1,15 @@
 # Laporan Praktikum Jaringan Komputer: Domain Name System (DNS)
 
+### Identitas Praktikan
+
+| Keterangan | Imformasi |
+| :--- | :--- |
+| **Nama** | Alif Luthfan Adeefa |
+| **NIM** | 103072400163 |
+| **Kelas** | IF-04-01 |
+
+---
+
 ## 1. Capaian Pembelajaran
 
 | No | Tujuan | Penjelasan Sederhana |

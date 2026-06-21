@@ -2,7 +2,7 @@
 
 ### Identitas Praktikan
 
-| Item | Keterangan |
+| Keterangan | Imformasi |
 | :--- | :--- |
 | **Nama** | Alif Luthfan Adeefa |
 | **NIM** | 103072400163 |
