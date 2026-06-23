@@ -113,7 +113,7 @@ python webserver.py
 
 **Hasil:**
 
-![Server Running](Assets/Program/server_running.png)
+![Server Running](Assets/server_running.png)
 
 Server berhasil dijalankan dengan:
 - Menampilkan `"Server siap di port 6789..."`
@@ -140,7 +140,7 @@ Kode program web server dengan penjelasan:
 
 **Hasil:**
 
-![Browser 200](Assets/Program/browser_200.png)
+![Browser 200](Assets/browser_200.png)
 
 Halaman berhasil ditampilkan dengan:
 - Teks "Praktikum Modul 9"
@@ -155,7 +155,7 @@ Halaman berhasil ditampilkan dengan:
 
 **Hasil:**
 
-![Browser 404](Assets/Program/browser_404.png)
+![Browser 404](Assets/browser_404.png)
 
 Server berhasil menangani error:
 - Menampilkan **"404 Not Found"**
@@ -190,7 +190,7 @@ curl.exe -v http://localhost:6789/helloworld.html
 </html>
 ```
 
-![curl 200](Assets/Program/curl_200.png)
+![curl 200](Assets/curl_200.png)
 
 Response lengkap menunjukkan:
 - Status code **200 OK**
@@ -215,7 +215,7 @@ curl.exe -v http://localhost:6789/FileGakAda.html
 <html><body><h1>404 Not Found</h1></body></html>
 ```
 
-![curl 404](Assets/Program/curl_404.png)
+![curl 404](Assets/curl_404.png)
 
 Response 404 terverifikasi via command line dengan:
 - Status code: **404 Not Found**
