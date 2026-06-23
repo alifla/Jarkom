@@ -2,8 +2,8 @@
 ## Web Server Programming dengan Python Socket
 
 ### Identitas Praktikan
-| Item | Keterangan |
-|------|-----------|
+| Keterangan | Imformasi |
+| :--- | :--- |
 | **Nama** | Alif Luthfan Adeefa |
 | **NIM** | 103072400163 |
 | **Kelas** | IF-04-01 |
