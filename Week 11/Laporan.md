@@ -2,11 +2,11 @@
 **Dynamic Host Configuration Protocol (DHCP)**
 
 ## Identitas Praktikan
-| Item | Keterangan |
+| Keterangan | Imformasi |
 | :--- | :--- |
-| **Nama** | [ISI NAMA] |
-| **NIM** | [ISI NIM] |
-| **Kelas** | [ISI KELAS] |
+| **Nama** | Alif Luthfan Adeefa |
+| **NIM** | 103072400163 |
+| **Kelas** | IF-04-01 |
 
 ---
 
